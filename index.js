@@ -7,7 +7,9 @@ bot.on('ready', async function(){
     let role = await server.roles.fetch('773650289601019924')
     let server2 = await bot.guilds.fetch('626684559345451010')
     let role2 = await server2.roles.fetch('774379949015564348')
-    timer(role, role2);
+    setTimeout(function(){
+        timer(role, role2);
+    }, 10000)
 })
 
 bot.login('Nzc0MzU5NjAxODA5MTk1MDgw.X6Wokw.bZjIlCX2Lma5ERkqHiKrsLuJuN4')
@@ -19,7 +21,7 @@ async function timer(role, role2){
     await role2.setColor(randomColor)
     setTimeout(function(){
         timer(role, role2)
-    }, 5000
+    }, 10000
     )
 }
 
