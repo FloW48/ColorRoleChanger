@@ -11,7 +11,7 @@ bot.on('ready', async function(){
     }, 1000)
 })
 
-bot.login('Nzc0MzU5NjAxODA5MTk1MDgw.X6Wokw.RRE7r4V2TiOBkrIjd9vgGTjK3Lc')
+bot.login('token1')
     .catch(console.error);
 
 bot2.on('ready', async function(){
@@ -23,7 +23,7 @@ bot2.on('ready', async function(){
     }, 1000)
 })
 
-bot2.login('Nzc0NjUwNTYzNDE3MjEwODkw.X6a3jg.D0Cb86dA8hmJh0jeigZ5kRIbkGQ')
+bot2.login('token2')
 
 async function timer(role){
     let randomColor = random_hex_color_code();
