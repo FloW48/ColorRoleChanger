@@ -15,7 +15,8 @@ bot.on('ready', async function(){
     let roleMaxi = await server.roles.fetch('803757984072204348')
     let roleRoma = await server.roles.fetch('760461642835427348')
     let roleNoah = await server.roles.fetch('803757972643774534')
-    checkIfTime([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah])
+    let roleAlex = await server.roles.fetch('804281331060178954')
+    checkIfTime([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah, roleAlex])
 })
 
 async function checkIfTime(arrayRoles){
@@ -45,6 +46,9 @@ async function timer(arrayRoles){
 }
 
 function random_hex_color_code(){
-    let n = (Math.random() * 0xfffff * 1000000).toString(16);
-    return '#' + n.slice(0, 6);
+    var letters = "0123456789ABCDEF"; 
+    var color = '#'; 
+    for (var i = 0; i < 6; i++) 
+       color += letters[(Math.floor(Math.random() * 16))]; 
+    return color;
 }
