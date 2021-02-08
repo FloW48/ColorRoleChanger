@@ -45,10 +45,27 @@ async function timer(arrayRoles){
     )
 }
 
+bot.on('message', message => {
+	if(message.content.startsWith("color example") && message.author.id == '256054054260572161'){
+		message.channel.send(random_hex_color_code())
+	}
+})
+
 function random_hex_color_code(){
-    var letters = "0123456789ABCDEF"; 
-    var color = '#'; 
-    for (var i = 0; i < 6; i++) 
-       color += letters[(Math.floor(Math.random() * 16))]; 
-    return color;
+    //Alea RGB
+    // Alea 122 - 255
+    // Fiesta
+    let color = [0,0,0]
+    color[Math.floor(Math.random() * 3)] = Math.floor(Math.random() * 255) + 122;
+    for(let i = 0; i < color.length; i++){
+        if(color[i] == 0){
+            color[i] = Math.floor(Math.random() * 256)
+        }
+    }
+    let colorHex = "#";
+    colorHex = color[0].toString(16);
+    colorHex += color[1].toString(16);
+    colorHex += color[2].toString(16);
+
+    return colorHex
 }
