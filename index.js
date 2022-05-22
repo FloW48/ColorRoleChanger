@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const secret = require("./secret.json");
+const schedule = require('node-schedule')
 
 started = false;
 hour = 7
@@ -16,7 +17,9 @@ bot.on('ready', async function(){
     let roleRoma = await server.roles.fetch('760461642835427348')
     let roleNoah = await server.roles.fetch('803757972643774534')
     let roleAlex = await server.roles.fetch('804281331060178954')
-    checkIfTime([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah, roleAlex])
+    const job = schedule.scheduleJob('* * 7 * * *', function(){
+        timer([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah, roleAlex])
+    });
 })
 
 bot.on('rateLimit', async function(infos) {
@@ -27,22 +30,6 @@ bot.on('rateLimit', async function(infos) {
 
 });
 
-async function checkIfTime(arrayRoles){
-    hourNow = new Date().getUTCHours();
-    if(hour == hourNow){
-        console.log("c leur")
-        timer(arrayRoles)
-    }
-    else{
-
-        setTimeout(function(){
-            checkIfTime(arrayRoles)
-        }, 1000*60)
-    }
-}
-
-bot.login(secret.token)
-    .catch(console.error);
 
 async function timer(arrayRoles){
     for (role of arrayRoles){
@@ -50,11 +37,11 @@ async function timer(arrayRoles){
         await role.setColor(randomColor)
         console.log("color changed")
     }
-    setTimeout(function(){
-        timer(arrayRoles)
-    }, 1000*3600*24
-    )
 }
+
+bot.login(secret.token)
+    .catch(console.error);
+
 
 bot.on('message', message => {
 	if(message.content == "color example" && message.author.id == '256054054260572161'){
@@ -144,9 +131,6 @@ function changeColorOfMember(member, idRole, color){
 }
 
 function random_hex_color_code(){
-    //Alea RGB
-    // Alea 122 - 255
-    // Fiesta
     let color = [0,0,0]
     color[Math.floor(Math.random() * 3)] = Math.floor(Math.random() * 122) + 122;
     for(let i = 0; i < color.length; i++){

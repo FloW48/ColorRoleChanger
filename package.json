@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/FloW48/ColorRoleChanger#readme",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "node-schedule": "^2.1.0"
   }
 }
