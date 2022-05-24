@@ -3,8 +3,7 @@ const bot = new Discord.Client();
 const secret = require("./secret.json");
 const schedule = require('node-schedule')
 
-started = false;
-hour = 7
+const HOUR = 7
 
 bot.on('ready', async function(){
     bot.user.setActivity("Every day, I change color ;)").catch(console.error);
@@ -17,7 +16,7 @@ bot.on('ready', async function(){
     let roleRoma = await server.roles.fetch('760461642835427348')
     let roleNoah = await server.roles.fetch('803757972643774534')
     let roleAlex = await server.roles.fetch('804281331060178954')
-    const job = schedule.scheduleJob('* * 7 * * *', function(){
+    const job = schedule.scheduleJob(`0 0 ${HOUR} * * *`, function(){
         timer([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah, roleAlex])
     });
 })
