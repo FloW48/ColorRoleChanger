@@ -17,7 +17,7 @@ bot.on('ready', async function(){
     let roleRoma = await server.roles.fetch('760461642835427348')
     let roleNoah = await server.roles.fetch('803757972643774534')
     let roleAlex = await server.roles.fetch('804281331060178954')
-    const job = schedule.scheduleJob('* * 7 * * *', function(){
+    const job = schedule.scheduleJob('0 0 7 * * *', function(){
         timer([roleFloW,roleClem,roleLoic,roleQuen,roleMaxi,roleRoma,roleNoah, roleAlex])
     });
 })
